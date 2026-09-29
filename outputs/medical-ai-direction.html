@@ -1,0 +1,172 @@
+<style>
+  #medical-ai-direction {
+    --med-page: light-dark(#f5f9fa, #132e3c);
+    --med-surface: light-dark(#ffffff, #193746);
+    --med-text: light-dark(#16323d, #f5f9fa);
+    --med-muted: light-dark(#526974, #b6c8d0);
+    --med-line: light-dark(#d5e3e8, #49626e);
+    --med-soft: light-dark(#dcf3ef, #214b4c);
+    --med-soft-text: light-dark(#06676b, #7de0d2);
+    --med-radius: 16px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: var(--med-text);
+    background: var(--med-page);
+    font-size: 16px;
+    line-height: 1.55;
+    border-radius: var(--med-radius);
+    overflow: clip;
+  }
+  #medical-ai-direction * { box-sizing: border-box; }
+  #medical-ai-direction h2, #medical-ai-direction h3, #medical-ai-direction h4, #medical-ai-direction p { margin: 0; }
+  #medical-ai-direction a { color: inherit; }
+  #medical-ai-direction .med-header { padding: 20px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; background: var(--med-surface); }
+  #medical-ai-direction .med-name { font-size: 17px; font-weight: 650; letter-spacing: -.025em; }
+  #medical-ai-direction .med-name span { color: var(--med-soft-text); }
+  #medical-ai-direction .med-nav { display: flex; flex-wrap: wrap; gap: 24px; font-size: 14px; }
+  #medical-ai-direction .med-nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+  #medical-ai-direction .med-nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
+  #medical-ai-direction .med-hero { --hero-bg: #102b3a; --hero-text: #f5f9fa; --hero-muted: #b6c8d0; --hero-accent: #7de0d2; padding: 44px 32px; color: var(--hero-text); background: var(--hero-bg); display: grid; grid-template-columns: 1.25fr 1fr; align-items: center; gap: 36px; }
+  #medical-ai-direction .med-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--hero-accent); margin-bottom: 16px; }
+  #medical-ai-direction .med-hero h2 { font-size: clamp(32px, 4.3vw, 46px); line-height: 1.12; letter-spacing: -.045em; font-weight: 650; text-wrap: balance; }
+  #medical-ai-direction .med-hero h2 span { color: var(--hero-accent); }
+  #medical-ai-direction .med-hero-copy > p:last-of-type { color: var(--hero-muted); font-size: 15px; margin-top: 20px; max-width: 49ch; }
+  #medical-ai-direction .med-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 26px; font-size: 14px; }
+  #medical-ai-direction .med-action { border-radius: 10px; padding: 12px 16px; display: inline-flex; align-items: center; gap: 14px; text-decoration: none; background: #087f83; color: #fff; min-height: 48px; font-weight: 600; }
+  #medical-ai-direction .med-action:hover { background: #06676b; }
+  #medical-ai-direction .med-secondary { display: inline-flex; align-items: center; min-height: 44px; text-underline-offset: 5px; }
+  #medical-ai-direction .med-workflow { padding: 24px; border-radius: var(--med-radius); background: var(--med-surface); color: var(--med-text); box-shadow: 0 12px 28px #00000015; }
+  #medical-ai-direction .med-workflow-label { color: var(--med-muted); font-size: 12px; letter-spacing: .04em; margin-bottom: 20px; }
+  #medical-ai-direction .med-flow { list-style: none; padding: 0; margin: 0; }
+  #medical-ai-direction .med-flow li { display: grid; grid-template-columns: 36px 1fr; gap: 12px; position: relative; padding-bottom: 20px; }
+  #medical-ai-direction .med-flow li:last-child { padding-bottom: 0; }
+  #medical-ai-direction .med-flow li:not(:last-child)::after { content: ''; position: absolute; left: 17px; width: 1px; background: var(--med-line); top: 36px; bottom: 2px; }
+  #medical-ai-direction .med-step { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--med-soft); color: var(--med-soft-text); font-size: 13px; }
+  #medical-ai-direction .med-flow strong { display: block; font-size: 15px; font-weight: 600; }
+  #medical-ai-direction .med-flow small { display: block; color: var(--med-muted); font-size: 13px; margin-top: 3px; }
+  #medical-ai-direction .med-board { padding: 24px 32px; border-bottom: 1px solid var(--med-line); }
+  #medical-ai-direction .med-section-label { font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--med-muted); margin-bottom: 14px; }
+  #medical-ai-direction .med-palette { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+  #medical-ai-direction .med-swatch { height: 34px; border: 1px solid var(--med-line); border-radius: 7px; margin-bottom: 7px; }
+  #medical-ai-direction .med-color-name { font-size: 13px; font-weight: 600; }
+  #medical-ai-direction .med-hex { font-size: 12px; color: var(--med-muted); font-variant-numeric: tabular-nums; }
+  #medical-ai-direction .med-projects { padding: 30px 32px; }
+  #medical-ai-direction .med-projects > h3 { font-size: 24px; letter-spacing: -.03em; font-weight: 650; margin-bottom: 16px; }
+  #medical-ai-direction .med-card { border-radius: var(--med-radius); border: 1px solid var(--med-line); background: var(--med-surface); padding: 22px; }
+  #medical-ai-direction .med-card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 12px; }
+  #medical-ai-direction .med-chip { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 30px; background: var(--med-soft); color: var(--med-soft-text); font-size: 12px; font-weight: 600; }
+  #medical-ai-direction .med-card-meta { color: var(--med-muted); font-size: 13px; }
+  #medical-ai-direction .med-card h4 { font-size: 21px; font-weight: 650; letter-spacing: -.025em; }
+  #medical-ai-direction .med-card > p { color: var(--med-muted); font-size: 15px; max-width: 70ch; margin-top: 8px; }
+  #medical-ai-direction .med-details { margin-top: 14px; border-top: 1px solid var(--med-line); }
+  #medical-ai-direction summary { padding-block: 14px 4px; min-height: 44px; font-size: 14px; color: var(--med-soft-text); font-weight: 600; }
+  #medical-ai-direction .med-detail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 12px; }
+  #medical-ai-direction .med-detail-grid dt { font-size: 13px; font-weight: 650; margin-bottom: 6px; }
+  #medical-ai-direction .med-detail-grid dd { margin: 0; font-size: 14px; color: var(--med-muted); }
+  #medical-ai-direction .med-approach { padding: 4px 32px 30px; }
+  #medical-ai-direction .med-approach ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  #medical-ai-direction .med-approach li { font-size: 14px; }
+  #medical-ai-direction .med-approach span { display: block; color: var(--med-soft-text); font-size: 12px; margin-bottom: 3px; }
+  @media (max-width: 650px) {
+    #medical-ai-direction .med-header { padding: 16px 20px; }
+    #medical-ai-direction .med-hero { grid-template-columns: 1fr; padding: 30px 20px; gap: 26px; }
+    #medical-ai-direction .med-hero h2 { font-size: 36px; }
+    #medical-ai-direction .med-board, #medical-ai-direction .med-projects { padding: 24px 20px; }
+    #medical-ai-direction .med-palette { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 16px; }
+    #medical-ai-direction .med-detail-grid { grid-template-columns: 1fr; gap: 16px; }
+    #medical-ai-direction .med-approach { padding: 0 20px 24px; }
+    #medical-ai-direction .med-approach ol { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+<section id="medical-ai-direction" aria-label="Medical AI portfolio design preview">
+  <header class="med-header">
+    <div class="med-name">Steven Yami<span>.</span></div>
+    <nav class="med-nav" aria-label="Preview sections">
+      <a class="cursor-interaction" href="#med-projects">Projects</a>
+      <a class="cursor-interaction" href="#med-approach">Approach</a>
+    </nav>
+  </header>
+  <section class="med-hero" aria-labelledby="med-hero-heading">
+    <div class="med-hero-copy">
+      <p class="med-eyebrow">Medical AI portfolio</p>
+      <h2 id="med-hero-heading">Exploring AI for <span>better healthcare experiences.</span></h2>
+      <p>A portfolio of ideas at the intersection of healthcare, intelligent systems, and thoughtful interface design.</p>
+      <div class="med-actions">
+        <a class="med-action cursor-interaction" href="#med-projects">Explore concepts <span aria-hidden="true">↗</span></a>
+        <a class="med-secondary cursor-interaction" href="#med-approach">My approach</a>
+      </div>
+    </div>
+    <div class="med-workflow" aria-label="Illustrative workflow from sample data to human review">
+      <p class="med-workflow-label">ILLUSTRATIVE WORKFLOW</p>
+      <ol class="med-flow">
+        <li><span class="med-step" aria-hidden="true">01</span><div><strong>Sample data</strong><small>Understand the input</small></div></li>
+        <li><span class="med-step" aria-hidden="true">02</span><div><strong>AI assistance</strong><small>Make information inspectable</small></div></li>
+        <li><span class="med-step" aria-hidden="true">03</span><div><strong>Human review</strong><small>Keep decisions in context</small></div></li>
+      </ol>
+    </div>
+  </section>
+  <section class="med-board" aria-label="Proposed core color palette">
+    <p class="med-section-label">Core palette</p>
+    <div class="med-palette">
+      <div><div class="med-swatch" style="background:#102b3a"></div><div class="med-color-name">Navy</div><div class="med-hex">#102B3A</div></div>
+      <div><div class="med-swatch" style="background:#087f83"></div><div class="med-color-name">Teal</div><div class="med-hex">#087F83</div></div>
+      <div><div class="med-swatch" style="background:#dcf3ef"></div><div class="med-color-name">Soft teal</div><div class="med-hex">#DCF3EF</div></div>
+      <div><div class="med-swatch" style="background:#f5f9fa"></div><div class="med-color-name">Mist</div><div class="med-hex">#F5F9FA</div></div>
+      <div><div class="med-swatch" style="background:#ffffff"></div><div class="med-color-name">White</div><div class="med-hex">#FFFFFF</div></div>
+      <div><div class="med-swatch" style="background:#526974"></div><div class="med-color-name">Slate</div><div class="med-hex">#526974</div></div>
+    </div>
+  </section>
+  <section class="med-projects" id="med-projects" aria-labelledby="med-project-title">
+    <h3 id="med-project-title">Selected concepts</h3>
+    <article class="med-card">
+      <div class="med-card-top"><span class="med-chip">Proposed concept</span><span class="med-card-meta">Medical imaging / Interface design</span></div>
+      <h4>Imaging review workspace</h4>
+      <p>An interface concept for organizing sample imaging findings, reviewer notes, and the context behind each result.</p>
+      <details class="med-details">
+        <summary class="cursor-interaction">Explore the case-study structure</summary>
+        <dl class="med-detail-grid">
+          <div><dt>Problem</dt><dd>What information does a reviewer need to inspect an AI-assisted finding?</dd></div>
+          <div><dt>Contribution</dt><dd>Document the workflow, interface decisions, and Steven's actual role.</dd></div>
+          <div><dt>Evidence</dt><dd>Add evaluation context and limitations when project work is available.</dd></div>
+        </dl>
+      </details>
+    </article>
+  </section>
+  <section class="med-approach" id="med-approach" aria-label="Proposed design approach">
+    <p class="med-section-label">The approach</p>
+    <ol><li><span>01</span>Understand the workflow</li><li><span>02</span>Build a prototype</li><li><span>03</span>Show the reasoning</li><li><span>04</span>Evaluate and iterate</li></ol>
+  </section>
+</section>
+<script>
+  (() => {
+    const root = document.getElementById('medical-ai-direction');
+    const hero = root.querySelector('.med-hero');
+    const saved = window.openai?.widgetState?.privateContent;
+    const state = {
+      hero: saved?.hero === 'Page surface' ? 'Page surface' : 'Navy',
+      radius: Number.isFinite(saved?.radius) ? Math.max(4, Math.min(24, saved.radius)) : 16
+    };
+    function render() {
+      root.style.setProperty('--med-radius', `${state.radius}px`);
+      hero.style.setProperty('--hero-bg', state.hero === 'Page surface' ? 'var(--med-page)' : '#102b3a');
+      hero.style.setProperty('--hero-text', state.hero === 'Page surface' ? 'var(--med-text)' : '#f5f9fa');
+      hero.style.setProperty('--hero-muted', state.hero === 'Page surface' ? 'var(--med-muted)' : '#b6c8d0');
+      hero.style.setProperty('--hero-accent', state.hero === 'Page surface' ? 'var(--med-soft-text)' : '#7de0d2');
+    }
+    function save() {
+      window.openai?.setWidgetState?.({ modelContent: { medicalAiHero: state.hero, cornerRadius: state.radius }, privateContent: { ...state } }).catch(() => {});
+    }
+    render();
+    window.addEventListener('openai:set_globals', (event) => {
+      const next = event.detail?.globals?.widgetState?.privateContent;
+      if (!next) return;
+      state.hero = next.hero === 'Page surface' ? 'Page surface' : 'Navy';
+      state.radius = Number.isFinite(next.radius) ? Math.max(4, Math.min(24, next.radius)) : 16;
+      render();
+    });
+    if (globalThis.Tweak) {
+      const tweak = new Tweak({ container: root, onChange: () => { render(); save(); } });
+      tweak.addSelect(state, 'hero', { label: 'Hero emphasis', options: ['Navy', 'Page surface'] });
+      tweak.addSlider(state, 'radius', { label: 'Card corners', min: 4, max: 24, step: 2, unit: 'px' });
+    }
+  })();
+</script>

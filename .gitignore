@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.vite/
+.npm-cache/
+.vercel/
+
+# Local environment and editor files
+.env.local
+.env.*.local
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs
+*.log
