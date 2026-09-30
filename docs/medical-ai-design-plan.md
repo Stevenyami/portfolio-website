@@ -59,9 +59,10 @@ Approximate surface balance: 65% light neutrals, 25% navy, 10% teal and supporti
 
 | Section | Content and purpose | Layout and interaction |
 | --- | --- | --- |
-| Header | Steve Nyami wordmark; Focus, Projects, About; Contact action | White sticky header with a subtle separator. Mobile disclosure menu. |
+| Header | Steve Nyami wordmark; Focus, Experience, Projects, About; Contact action | White sticky header with a subtle separator. Mobile disclosure menu. |
 | Hero | Medical AI focus, one clear headline, confirmed study background | Navy split layout. Text on the left, illustrative workflow on the right. Anchor actions lead to existing sections. |
 | Focus areas | Computer Science, Medical AI, and the relationship between them | Quiet supporting labels or cards that stack or wrap on mobile. Avoid listing unconfirmed specializations. |
+| Experience | Roles from Steve's LinkedIn profile, then education, recognition, certifications, and skills | White band with a dated list: dates and location beside the role on desktop, stacked on mobile. Topic tags are display-only. |
 | Projects | A visible notice that project details are coming soon | A finished placeholder treatment without invented project titles, metrics, or inactive case-study links. Replace it with real work when supplied. |
 | Approach | Principles for useful, assessable medical AI | Explain the context, methods, evaluation, and role of human review. Present these as guiding principles. |
 | About | A personal introduction and verified background | Master's studies in Computer Science at TU Darmstadt and experience in Medical AI. CV link only when a real document exists. |
