@@ -27,7 +27,7 @@ npm run preview
 - Replace the contact notice with a real email link and verified professional profiles. Add a CV link only when a document is available. There is no contact form or backend.
 - Edit `src/main.js` for the mobile navigation and footer year. Essential content and navigation remain available without JavaScript.
 - Edit the color variables, typography, spacing, and components in `src/style.css` for the visual design.
-- Put static assets such as the favicon in `public/`.
+- Put static assets such as the favicon in `public/`. Photos live in `public/images/`: `steve-nyami.jpg` is the original 800 × 800 portrait, and `steve-nyami-portrait.jpg` is the 480 × 480 head-and-shoulders crop shown on the About profile card.
 
 See [the medical AI design plan](docs/medical-ai-design-plan.md) for the visual system, accessibility goals, and case-study structure.
 
