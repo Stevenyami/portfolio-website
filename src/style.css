@@ -16,6 +16,7 @@
   --color-primary-hover: #06676b;
   --color-teal-soft: #dcf3ef;
   --color-teal-bright: #7de0d2;
+  --color-blue-bright: #9cc4f5;
   --color-border: #d5e3e8;
   --radius-card: 16px;
   --radius-control: 10px;
@@ -77,7 +78,7 @@ section[tabindex='-1']:focus, main[tabindex='-1']:focus { outline: none; }
 .line-icon { display: grid; place-items: center; width: 48px; height: 48px; border: 1px solid var(--color-border); border-radius: 12px; color: var(--color-primary-hover); background: var(--color-page); }
 .line-icon svg { width: 25px; height: 25px; }
 
-/* Introduction and a static, illustrative network. */
+/* Introduction and an illustrative computer-vision scene, animated by src/scan-figure.js. */
 .hero { position: relative; isolation: isolate; color: var(--color-on-navy); background: var(--color-navy); }
 .hero-grid { position: absolute; z-index: -1; inset: 0; pointer-events: none; background-image: linear-gradient(#7de0d208 1px, transparent 1px), linear-gradient(90deg, #7de0d208 1px, transparent 1px); background-size: 80px 80px; mask-image: linear-gradient(90deg, transparent 35%, black); }
 .hero-layout { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 64px; padding-top: 80px; padding-bottom: 72px; }
@@ -97,17 +98,64 @@ section[tabindex='-1']:focus, main[tabindex='-1']:focus { outline: none; }
 .figure-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-inline: 24px; padding-block: 21px 19px; border-bottom: 1px solid #7de0d220; color: var(--color-on-navy-muted); font-size: 12px; }
 .figure-heading > span:first-child { display: flex; align-items: center; gap: 9px; }
 .figure-heading i { width: 6px; height: 6px; border-radius: 50%; background: var(--color-teal-bright); }
-.figure-index { font-size: 11px; letter-spacing: .12em; white-space: nowrap; }
-.network-art { position: relative; padding: 0 8px; }
-.network-art svg { width: 100%; height: auto; }
-.network-label { position: absolute; padding: 4px 9px; border: 1px solid #7de0d22b; border-radius: 5px; color: var(--color-on-navy-muted); background: #153342; font-size: 11px; letter-spacing: .03em; }
-.label-input { top: 27%; left: 6%; }
-.label-insight { right: 3%; bottom: 23%; }
-.intelligence-figure figcaption { padding: 0 24px 22px; }
-.figure-flow { display: grid; grid-template-columns: 1fr 12px 1.2fr 12px 1.3fr; align-items: center; gap: 7px; padding-top: 18px; border-top: 1px solid #7de0d220; font-size: 14px; line-height: 1.4; }
-.figure-flow > span:nth-child(even) { color: var(--color-teal-bright); }
-.figure-flow small { display: block; margin-bottom: 4px; color: var(--color-teal-bright); font-size: 11px; letter-spacing: .1em; }
-.intelligence-figure figcaption p { margin-top: 20px; color: var(--color-on-navy-muted); font-size: 11px; text-align: center; }
+.figure-status { padding: 2px 8px; border: 1px solid #7de0d23b; border-radius: 5px; font-size: 11px; letter-spacing: .03em; white-space: nowrap; }
+.scan-art { position: relative; margin: 20px 24px 0; }
+.scan-art svg { width: 100%; height: auto; }
+.scan-label { position: absolute; display: flex; align-items: center; padding: 2px 8px; border-radius: 4px; color: var(--color-navy); font-size: 13px; font-weight: 600; line-height: 1.5; letter-spacing: .02em; white-space: nowrap; transition: opacity 220ms, scale 220ms; }
+/* Labels are placed in percentages of the SVG's 480 × 408 viewBox. Each outline label's corner sits on its outline, and the script keeps it there as the parts move. */
+.label-instrument { right: 20.5%; bottom: 73.4%; background: var(--color-teal-bright); transform-origin: 100% 100%; }
+.label-tissue { left: 24.5%; bottom: 46.8%; background: var(--color-blue-bright); transform-origin: 0 100%; }
+.label-probe { background: var(--color-on-navy); transform-origin: 0 100%; }
+.label-probe b { margin-left: 6px; font: 500 12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 0; }
+.label-track { background: var(--color-teal-bright); transform-origin: 0 100%; }
+.label-action { background: var(--color-on-navy); transform-origin: 0 0; }
+/* The phase label sits beside the pause button, above the film strip it sums up. */
+.label-phase { right: calc(100% * 66 / 480); bottom: calc(100% * 68 / 408); background: var(--color-on-navy); transform-origin: 100% 100%; }
+.label-phase i { width: 8px; height: 8px; margin-right: 6px; border-radius: 2px; background: var(--color-teal-bright); }
+.scan-label svg { width: 0; height: 10px; transition: width 200ms, margin-left 200ms; }
+.scan-label.is-reviewed svg { width: 10px; margin-left: 5px; }
+.scan-timecode { fill: var(--color-teal-bright); fill-opacity: .6; font: 500 10px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .06em; transition: fill-opacity 200ms; }
+.scan-timecode.is-bright { fill-opacity: 1; }
+.scan-cursor { position: absolute; top: 0; left: 0; display: none; align-items: flex-start; gap: 1px; margin: -2px 0 0 -2px; opacity: 0; pointer-events: none; }
+.scan-cursor svg { width: 16px; height: 21px; filter: drop-shadow(0 2px 3px #04141c80); transform-origin: 2px 2px; transition: scale 120ms; }
+.scan-cursor.is-pressing svg { scale: .8; }
+.scan-cursor > span { margin-top: 15px; padding: 1px 7px; border-radius: 4px; color: var(--color-navy); background: var(--color-on-navy); font-size: 11px; font-weight: 600; line-height: 1.5; letter-spacing: .02em; white-space: nowrap; }
+/* The pause button sits inside the bottom-right corner mark, mirroring the timecode in the bottom-left. */
+.scan-toggle { position: absolute; right: calc(100% * 20 / 480); bottom: calc(100% * 68 / 408); display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 1px solid #7de0d259; border-radius: 50%; color: var(--color-teal-bright); background: #0a1f29e6; transition: background-color 160ms, border-color 160ms; }
+.scan-toggle:hover { border-color: var(--color-teal-bright); background: #153342; }
+.scan-toggle svg { width: 12px; height: 12px; }
+.scan-toggle .icon-play, .is-paused .scan-toggle .icon-pause { display: none; }
+.is-paused .scan-toggle .icon-play { display: block; }
+.intelligence-figure figcaption { padding: 0 24px 20px; }
+/* Each step is a button under a progress rule that fills during its stage. */
+.pipeline-steps { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; margin: 16px 0 0; padding: 0; list-style: none; }
+.pipeline-steps button { position: relative; display: block; width: 100%; min-height: 44px; padding: 10px 0 0; border: 0; color: var(--color-on-navy-muted); background: none; font-size: 13px; line-height: 1.35; text-align: left; transition: color 200ms; }
+.pipeline-steps button::before, .pipeline-steps button::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; border-radius: 1px; background: #7de0d22e; }
+.pipeline-steps button::after { background: var(--color-teal-bright); transform: scaleX(0); transform-origin: left; }
+.pipeline-steps .is-done::after { transform: none; }
+.pipeline-steps .is-active::after { transform: scaleX(var(--step-progress, 1)); }
+.pipeline-steps .is-active, .pipeline-steps button:enabled:hover { color: var(--color-on-navy); }
+.pipeline-steps button:disabled { cursor: default; }
+.pipeline-steps small { display: block; margin-bottom: 2px; font-size: 11px; letter-spacing: .1em; }
+.pipeline-steps :is(.is-active, .is-done) small { color: var(--color-teal-bright); }
+.pipeline-steps span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* The descriptions share one grid cell, so the caption keeps the height of the longest. */
+.pipeline-details { display: grid; margin-top: 12px; }
+.pipeline-detail { grid-area: 1 / 1; visibility: hidden; opacity: 0; color: var(--color-on-navy-muted); font-size: 14px; line-height: 1.55; transition: opacity 200ms, visibility 200ms; }
+.pipeline-detail.is-active { visibility: visible; opacity: 1; }
+.pipeline-detail strong { color: var(--color-on-navy); font-weight: 600; }
+.pipeline-models { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: 10px; }
+.pipeline-models > span { color: var(--color-teal-bright); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+.pipeline-models ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.pipeline-models li { padding: 1px 8px; border: 1px solid #7de0d23b; border-radius: 5px; color: var(--color-on-navy); font-size: 12px; line-height: 1.6; }
+/* With the script, labels appear on cue, and the reviewer shows while animated. Without it, only the outline labels show. */
+.intelligence-figure:not(.is-scripted) :is(.label-probe, .label-track, .label-action, .label-phase) { display: none; }
+.is-scripted .scan-label:not(.is-visible) { opacity: 0; scale: .85; }
+.is-animated .scan-cursor { display: flex; }
+.is-animated .figure-heading i { animation: scan-live 2s ease-out infinite; }
+.is-animated.is-paused .figure-heading i { animation: none; }
+@keyframes scan-live { from { box-shadow: 0 0 0 0 #7de0d299; } to { box-shadow: 0 0 0 7px #7de0d200; } }
+.figure-note { margin-top: 16px; padding-top: 14px; border-top: 1px solid #7de0d220; color: var(--color-on-navy-muted); font-size: 11px; text-align: center; }
 .hero-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 72px; border-top: 1px solid #7de0d223; color: var(--color-on-navy-muted); font-size: 12px; }
 .hero-footer > span { letter-spacing: .03em; }
 .hero-footer a { display: inline-flex; align-items: center; gap: 18px; min-height: 44px; }
@@ -367,6 +415,11 @@ section[tabindex='-1']:focus, main[tabindex='-1']:focus { outline: none; }
   .footer-name { width: 100%; }
 }
 
+@media (max-width: 479px) {
+  /* Only step numbers fit. The names stay available to screen readers, and each description starts with its step's name. */
+  .pipeline-steps span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+}
+
 @media (max-width: 389px) {
   .brand-name > span { display: none; }
   .brand-name { font-size: 15px; }
@@ -377,13 +430,14 @@ section[tabindex='-1']:focus, main[tabindex='-1']:focus { outline: none; }
   .hero-actions .button { width: 100%; justify-content: space-between; }
   .hero-actions .text-link { min-height: 48px; }
   .figure-heading { margin-inline: 16px; font-size: 11px; gap: 6px; }
-  .figure-index { font-size: 11px; }
-  .network-label { padding: 3px 6px; font-size: 11px; }
-  .label-input { left: 3%; }
-  .label-insight { right: 2%; }
+  .scan-art { margin-inline: 16px; }
+  .scan-label { padding: 1px 6px; font-size: 11px; }
+  .scan-label.is-reviewed svg { width: 9px; margin-left: 4px; }
+  .scan-cursor > span { padding-inline: 5px; font-size: 10px; }
+  .scan-toggle { width: 28px; height: 28px; }
   .intelligence-figure figcaption { padding-inline: 16px; }
-  .figure-flow { gap: 5px; font-size: 11px; }
-  .intelligence-figure figcaption p { font-size: 11px; }
+  .pipeline-steps { gap: 4px; }
+  .pipeline-detail { font-size: 13px; }
   .hero-footer { font-size: 10px; gap: 10px; }
   .hero-footer a { gap: 5px; }
   .credentials-inner p { display: block; }

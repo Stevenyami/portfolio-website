@@ -27,6 +27,7 @@ Use mostly soft white and white surfaces. Let deep navy anchor the hero and foot
 | `--color-primary-hover` | `#06676B` | Button hover and text on soft teal |
 | `--color-teal-soft` | `#DCF3EF` | Topic chips and quiet highlights |
 | `--color-teal-bright` | `#7DE0D2` | Small accents on navy; dark text when used as a fill |
+| `--color-blue-bright` | `#9CC4F5` | Second annotation color in the hero figure; navy text when used as a fill |
 | `--color-link` | `#2563A6` | Underlined inline links on light surfaces |
 | `--color-border` | `#D5E3E8` | Decorative separators and card outlines |
 | `--color-control-border` | `#6C8490` | Essential input boundaries |
@@ -38,10 +39,10 @@ Approximate surface balance: 65% light neutrals, 25% navy, 10% teal and supporti
 ### Pairing rules
 
 - Use white on the teal primary button; use dark teal `#06676B` for small text on soft teal. The lighter primary teal does not meet the normal-text contrast target on soft teal.
-- Use bright teal only on navy or as a fill with navy text.
+- Use bright teal and bright blue only on navy or as a fill with navy text.
 - Reserve amber and red for actual attention and error states. Pair every state color with a text label.
 - Keep decorative borders separate from interactive control boundaries.
-- Measured text contrast ratios: body/page **12.72:1**, muted/white **5.78:1**, white/teal button **4.80:1**, muted/navy **8.51:1**, warning/soft amber **4.96:1**. These validate the listed pairs, not the whole future site.
+- Measured text contrast ratios: body/page **12.72:1**, muted/white **5.78:1**, white/teal button **4.80:1**, muted/navy **8.51:1**, navy/bright teal **9.42:1**, navy/bright blue **8.14:1**, warning/soft amber **4.96:1**. These validate the listed pairs, not the whole future site.
 
 ## 2. Typography, shape, and spacing
 
@@ -60,7 +61,7 @@ Approximate surface balance: 65% light neutrals, 25% navy, 10% teal and supporti
 | Section | Content and purpose | Layout and interaction |
 | --- | --- | --- |
 | Header | Steve Nyami wordmark; Focus, Experience, Projects, About; Contact action | White sticky header with a subtle separator. Mobile disclosure menu. |
-| Hero | Medical AI focus, one clear headline, confirmed study background | Navy split layout. Text on the left, illustrative workflow on the right. Anchor actions lead to existing sections. |
+| Hero | Medical AI focus, one clear headline, confirmed study background | Navy split layout. Text on the left, an illustrative computer-vision scene on the right. Anchor actions lead to existing sections. |
 | Focus areas | Computer Science, Medical AI, and the relationship between them | Quiet supporting labels or cards that stack or wrap on mobile. Avoid listing unconfirmed specializations. |
 | Experience | Roles from Steve's LinkedIn profile, then education, recognition, certifications, and skills | White band with a dated list: dates and location beside the role on desktop, stacked on mobile. Topic tags are display-only. |
 | Projects | A visible notice that project details are coming soon | A finished placeholder treatment without invented project titles, metrics, or inactive case-study links. Replace it with real work when supplied. |
@@ -77,7 +78,20 @@ Keep the introduction short. Specific techniques, research roles, organizations,
 
 ### Hero visual
 
-The hero combines a static network illustration with the sequence **Data → Intelligence → Human insight**. Its caption identifies it as an illustrative view of connected intelligence. The diagram supports the theme without implying a specific model, dataset, or clinical result.
+The hero shows one frame of surgical video passing through a computer-vision pipeline. It reflects Steve's stated interest in computer vision applied to healthcare and his surgical data science skills. Inside a viewfinder-style frame, a grasper works on a region of tissue, and a film strip of recent frames runs below the frame. Six numbered steps sit under the strip: **Frames → Features → Segment → Track → Phase → Review**. Below them, the current step's description names example tools, models, or methods for that step.
+
+The frame acts out the pipeline in a 31-second loop that shows one frame in slow motion. Across the loop, the grasper reaches for the tissue's lobe with its jaws open, grips it, and retracts it, so the tissue stretches toward the jaws. It pulls again while tracked and holds through phase recognition and review. Then it lets go, and the tissue springs back. The instrument pivots around its entry point outside the frame, the tissue moves with breathing, and a timecode runs.
+
+1. **Frames:** the strip advances and the newest frame flashes in. A pixel grid appears, and a probe reads out the RGB values of single pixels.
+2. **Features:** a patch grid covers the frame, and patches light up in reading order, brightest on the instrument and the tissue.
+3. **Segment:** a scan line crosses the frame. Patches on the instrument or the tissue light up in its color, and the outlines and their labels appear behind the line. The instrument outline is solid bright teal and the tissue outline is dashed bright blue, so the two regions differ in line style as well as color. The newest thumbnail gains the outlines too.
+4. **Track:** the outlines dim, and a box labeled **Grasper · ID 1** closes in on the instrument tip. As the grasper pulls again, its tip leaves a trail of its recent positions.
+5. **Phase:** a dashed window marks the six most recent frames on the strip, and the bar under the newest frame fills. A **Phase: Dissection** label appears, and a **Retracting tissue** label names the action beside the jaws.
+6. **Review:** a cursor tagged **Reviewer** clicks the instrument outline, the tissue outline, and the phase label, and each label gains a check mark. The grasper then lets go, and the next loop clears the results as the strip advances.
+
+Each step's rule fills during its stage while its description shows. The steps are buttons that jump to their stage; while the loop is paused, they show the stage's finished moment. Labels stay attached to their moving outlines. A pause button sits in the frame's bottom-right corner. The loop stops while the figure is off screen. With reduced motion, the figure shows a still of each stage, chosen with the step buttons and starting at segmentation. Without JavaScript, it shows the segmentation still with both outlines and labels in place and the grasper hovering, and the step buttons are disabled. Below 480px, the steps show only their numbers; each description names its step.
+
+The figure is labeled **Illustrative**, and its caption states that it shows one frame in slow motion and is not real patient data or model output. Model names are labeled as examples of common approaches, not a record of a specific project. The figure shows no scores or metrics, so it does not imply a specific model, dataset, or clinical result; the probe's pixel values are the drawing's own colors. The tissue stays abstract, drawn in navy and teal with no realistic anatomy or blood. The drawing has one text alternative that describes the whole pipeline, and each step button is described by its step's text.
 
 ## 4. Project and case-study system
 
@@ -128,7 +142,7 @@ Use simple outline icons consistently for concepts such as documents, analysis, 
 - Give inputs and essential graphical boundaries sufficient contrast. Use a light outer focus ring on navy and a dark teal ring on light surfaces.
 - Check keyboard-only use, meaningful image alternatives, 200% text zoom, and reflow at a 320 CSS-pixel viewport.
 - Show essential information directly. Do not require hover, color perception, motion, or dragging to understand a project.
-- Keep interaction transitions around 150–200ms. Respect reduced-motion preferences and avoid looping scans or pulses.
+- Keep interaction transitions around 150–200ms. Respect reduced-motion preferences. The hero figure's loop is the only continuous animation; it has a pause control and stops off screen. Avoid other looping scans or pulses.
 - Essential portfolio content and contact links should remain readable if JavaScript fails. Enhance the mobile menu progressively so navigation stays available.
 
 ## 7. Implementation scope and verification
@@ -137,8 +151,8 @@ The initial implementation covers:
 
 1. **Foundation:** semantic palette variables and consistent spacing in `src/style.css`, readable typography, consistent actions, and visible focus states.
 2. **Structure and content:** `index.html` with Steve's identity, medical AI hero, project notice, approach, biography, contact notice, and matching metadata.
-3. **Visuals:** a clearly illustrative workflow in place of unrelated sample project artwork.
-4. **Behavior:** minimal JavaScript in `src/main.js` for mobile navigation and the footer year. Navigation is available before JavaScript enhances the menu.
+3. **Visuals:** a clearly illustrative computer-vision scene in place of unrelated sample project artwork.
+4. **Behavior:** minimal JavaScript in `src/main.js` for mobile navigation and the footer year, plus `src/scan-figure.js` for the hero figure's animation. Navigation is available before JavaScript enhances the menu.
 
 Remaining content work: add case studies and working contact links once Steve supplies the material. Keep navigation and resource URLs compatible with Vite.
 

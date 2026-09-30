@@ -50,39 +50,156 @@
             </div>
           </div>
           <figure class="intelligence-figure">
-            <div class="figure-heading"><span><i aria-hidden="true"></i> Connected intelligence</span><span class="figure-index" aria-hidden="true">FIG. 01</span></div>
-            <div class="network-art">
-              <svg viewBox="0 0 480 360" fill="none" aria-hidden="true" focusable="false">
+            <div class="figure-heading"><span><i aria-hidden="true"></i> Computer vision in surgery</span><span class="figure-status">Illustrative</span></div>
+            <div class="scan-art">
+              <svg viewBox="0 0 480 408" fill="none" role="img" aria-label="Illustration of one frame of surgical video passing through a computer-vision pipeline while a grasper grips and retracts a region of tissue. The frame arrives from a strip of recent frames and is read as pixels, encoded as patch features, and segmented into the instrument and the tissue. The instrument is boxed and tracked, the surgical phase and the action are recognized from recent frames, and a reviewer confirms each result.">
                 <defs>
-                  <radialGradient id="network-glow"><stop stop-color="#7de0d2" stop-opacity=".13"/><stop offset="1" stop-color="#7de0d2" stop-opacity="0"/></radialGradient>
-                  <linearGradient id="network-line" x1="100" y1="60" x2="400" y2="300" gradientUnits="userSpaceOnUse"><stop stop-color="#7de0d2"/><stop offset="1" stop-color="#438f99"/></linearGradient>
+                  <clipPath id="scan-view"><circle cx="240" cy="180" r="212"/></clipPath>
+                  <clipPath id="scan-reveal"><rect class="scan-reveal" width="480" height="360"/></clipPath>
+                  <radialGradient id="scan-light" cx="236" cy="172" r="232" gradientUnits="userSpaceOnUse"><stop stop-color="#2b6371"/><stop offset=".6" stop-color="#1a4250"/><stop offset="1" stop-color="#0e2934"/></radialGradient>
+                  <linearGradient id="scan-tissue" x1="-60" y1="-46" x2="40" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#4c9199"/><stop offset="1" stop-color="#1d4957"/></linearGradient>
+                  <linearGradient id="scan-metal" x1="0" y1="-8" x2="0" y2="8" gradientUnits="userSpaceOnUse"><stop stop-color="#6c8591"/><stop offset=".3" stop-color="#dbe7eb"/><stop offset=".6" stop-color="#9db2bb"/><stop offset="1" stop-color="#4f6873"/></linearGradient>
+                  <linearGradient id="scan-glow"><stop stop-color="#7de0d2" stop-opacity="0"/><stop offset="1" stop-color="#7de0d2" stop-opacity=".24"/></linearGradient>
+                  <linearGradient id="scan-band-fade"><stop stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+                  <mask id="scan-band-mask" maskContentUnits="objectBoundingBox"><rect width="1" height="1" fill="url(#scan-band-fade)"/></mask>
+                  <pattern id="scan-patch-grid" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M12 .5H.5V12" stroke="#7de0d2" stroke-opacity=".35"/></pattern>
+                  <pattern id="scan-pixel-grid" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M8 .5H.5V8" stroke="#7de0d2" stroke-opacity=".16"/></pattern>
+                  <pattern id="scan-cell-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 .5H.5V24" stroke="#7de0d2" stroke-opacity=".35"/></pattern>
+                  <filter id="scan-shadow" x="-10%" y="-150%" width="120%" height="400%"><feGaussianBlur stdDeviation="5"/></filter>
+                  <radialGradient id="film-light"><stop stop-color="#2b6371"/><stop offset="1" stop-color="#143744"/></radialGradient>
+                  <clipPath id="film-view"><circle cx="18" cy="13.5" r="15.9"/></clipPath>
+                  <path id="film-line" d="M19.8 14.9L50-4.7" stroke-linecap="round"/>
+                  <ellipse id="film-blob" cx="11.25" cy="19.35" rx="6" ry="3.3" transform="rotate(-10 11.25 19.35)"/>
+                  <!-- One film-strip thumbnail: the frame at 0.075 scale, with its outlines as film-mark. src/scan-figure.js clones it for each slot. -->
+                  <g id="film-frame">
+                    <rect width="36" height="27" rx="3" fill="#0a1f29"/>
+                    <g clip-path="url(#film-view)">
+                      <rect width="36" height="27" fill="url(#film-light)"/>
+                      <path d="M0 0H36V7.2C32.1 8.4 27.9 6.6 23 7.6C17.7 8.8 12.9 6.6 8.1 7.8C4.8 8.6 2.3 8.3 0 8.9Z" fill="#163a48"/>
+                      <path d="M36 27V16C33.5 15.2 30.3 16.7 27.3 18.3C24.2 20.1 22.2 23.4 21.2 27Z" fill="#12313e"/>
+                      <use href="#film-blob" fill="#3f8690"/>
+                      <use class="film-mark" href="#film-blob" fill="#9cc4f5" fill-opacity=".3" stroke="#9cc4f5" stroke-width=".8"/>
+                      <g class="film-tool">
+                        <use href="#film-line" stroke="#b9ccd3" stroke-width="1.5"/>
+                        <use class="film-mark" href="#film-line" stroke="#7de0d2" stroke-width="3.2" stroke-opacity=".5"/>
+                      </g>
+                    </g>
+                  </g>
                 </defs>
-                <circle cx="240" cy="180" r="175" fill="url(#network-glow)"/>
-                <g stroke="#7de0d2" stroke-opacity=".12">
-                  <circle cx="240" cy="180" r="147"/><circle cx="240" cy="180" r="112" stroke-dasharray="3 7"/>
-                  <path d="M240 14V43M240 317V346M62 180H92M388 180H418M230 24H250M230 336H250M72 170V190M408 170V190"/>
+                <rect width="480" height="360" rx="10" fill="#0a1f29"/>
+                <g clip-path="url(#scan-view)">
+                  <rect width="480" height="360" fill="url(#scan-light)"/>
+                  <g stroke="#7de0d2" stroke-opacity=".07">
+                    <path d="M96 156C150 140 214 146 270 164C318 180 356 200 392 232"/>
+                    <path d="M60 196C104 180 148 178 190 186"/>
+                  </g>
+                  <path d="M0 0H480V96C428 112 372 88 306 102C236 118 172 88 108 104C64 115 30 110 0 118Z" fill="#163a48"/>
+                  <g stroke="#7de0d2">
+                    <path d="M0 118C30 110 64 115 108 104C172 88 236 118 306 102C372 88 428 112 480 96" stroke-opacity=".22"/>
+                    <path d="M0 100C34 94 70 98 112 88C176 72 238 102 306 86C372 72 430 94 480 80" stroke-opacity=".09"/>
+                    <path d="M0 82C38 78 76 80 118 72C180 58 240 86 306 70C372 56 432 76 480 64" stroke-opacity=".06"/>
+                    <path d="M40 62C76 56 104 62 138 50C160 42 180 42 206 34M104 58C114 46 126 40 144 36M156 46C170 56 190 60 214 58M302 34C332 46 356 44 384 54C404 60 424 58 446 64M356 46C366 36 380 30 398 28" stroke-opacity=".15" stroke-width="1.2" stroke-linecap="round"/>
+                  </g>
+                  <path d="M480 360V214C446 202 404 222 364 244C322 268 296 312 282 360Z" fill="#12313e"/>
+                  <g stroke="#7de0d2">
+                    <path d="M480 214C446 202 404 222 364 244C322 268 296 312 282 360" stroke-opacity=".16"/>
+                    <path d="M480 240C452 232 418 248 388 266C356 286 334 322 324 360M480 266C458 260 432 272 408 288C382 306 366 334 360 360" stroke-opacity=".07"/>
+                  </g>
+                  <!-- Each part has an image group and an outline group; src/scan-figure.js moves both together, swings the jaws, and stretches the tissue where they grip it. -->
+                  <g class="scan-tissue" transform="translate(150 258) rotate(-10)">
+                    <path class="scan-tissue-shape" d="M-80 2C-80-30-55-48-25-46C5-44 35-30 58-22C72-17 80-8 78 2C76 12 66 18 54 20C30 26 5 44-25 46C-58 48-80 34-80 2Z" fill="url(#scan-tissue)"/>
+                    <path d="M-80 2C-80-30-55-48-25-46C5-44 35-30 58-22C72-17 80-8 78 2C76 12 66 18 54 20C30 26 5 44-25 46C-58 48-80 34-80 2Z" transform="translate(-14 -5) scale(.62)" stroke="#dcf3ef" stroke-opacity=".14" vector-effect="non-scaling-stroke"/>
+                    <path d="M-62-24C-52-34-38-38-24-38" stroke="#e6f6f3" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/>
+                    <path d="M-71-6C-71-11-69-15-66-18" stroke="#e6f6f3" stroke-opacity=".4" stroke-width="2" stroke-linecap="round"/>
+                  </g>
+                  <g class="scan-tool" transform="translate(262 200) rotate(-33)">
+                    <path d="M8 6H440V26H8Z" fill="#04141c" fill-opacity=".5" filter="url(#scan-shadow)"/>
+                    <rect x="46" y="-8" width="400" height="16" fill="url(#scan-metal)"/>
+                    <rect x="122" y="-8" width="5" height="16" fill="#3f5a66"/>
+                    <path class="scan-jaw" d="M36-8.5L6-13.5Q0-13 2-9L34-2Z" fill="#b3c6ce"/>
+                    <path class="scan-jaw" d="M36 8.5L6 13.5Q0 13 2 9L34 2Z" fill="#b3c6ce"/>
+                    <rect x="32" y="-9.5" width="18" height="19" rx="3" fill="url(#scan-metal)"/>
+                    <circle cx="41" r="2.2" fill="#3f5a66"/>
+                  </g>
+                  <!-- Stage layers, all driven by src/scan-figure.js: pixels, then patch features, outlines, and tracking. -->
+                  <rect class="scan-pixels" width="480" height="360" fill="url(#scan-pixel-grid)" opacity="0"/>
+                  <g class="scan-heat" opacity="0"></g>
+                  <rect class="scan-cells" width="480" height="360" fill="url(#scan-cell-grid)" opacity="0"/>
+                  <rect class="scan-read" width="24" height="24" stroke="#f5f9fa" stroke-width="1.5" opacity="0"/>
+                  <g class="scan-masks" clip-path="url(#scan-reveal)">
+                    <g class="scan-tissue" transform="translate(150 258) rotate(-10)">
+                      <path class="scan-tissue-shape" d="M-80 2C-80-30-55-48-25-46C5-44 35-30 58-22C72-17 80-8 78 2C76 12 66 18 54 20C30 26 5 44-25 46C-58 48-80 34-80 2Z" fill="#9cc4f5" fill-opacity=".14" stroke="#9cc4f5" stroke-width="1.5" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"/>
+                    </g>
+                    <g class="scan-tool" transform="translate(262 200) rotate(-33)">
+                      <path class="scan-tool-outline" d="M446-11.5H54L51-13H31L6-17Q-3.5-16.5-1-9L1.5-6L29 0L1.5 6L-1 9Q-3.5 16.5 6 17L31 13H51L54 11.5H446Z" fill="#7de0d2" fill-opacity=".14" stroke="#7de0d2" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+                    </g>
+                  </g>
+                  <g class="scan-sweep" opacity="0">
+                    <rect class="scan-band" x="-60" width="60" height="360" fill="url(#scan-patch-grid)" mask="url(#scan-band-mask)"/>
+                    <g class="scan-patches"></g>
+                    <rect class="scan-glow" x="-40" width="40" height="360" fill="url(#scan-glow)"/>
+                    <rect class="scan-line" x="-2" width="2" height="360" fill="#7de0d2"/>
+                  </g>
+                  <g class="scan-track" opacity="0">
+                    <path class="scan-path" stroke="#7de0d2" stroke-opacity=".45" stroke-width="1.5" stroke-linejoin="round"/>
+                    <g class="scan-trail" fill="#7de0d2"></g>
+                    <path class="scan-box" stroke="#7de0d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle class="scan-tip" r="4" stroke="#f5f9fa" stroke-width="1.5"/>
+                  </g>
+                  <rect class="scan-probe" width="8" height="8" stroke="#f5f9fa" stroke-width="1.5" opacity="0"/>
+                  <rect class="scan-flash" width="480" height="360" fill="#f5f9fa" opacity="0"/>
                 </g>
-                <g stroke="url(#network-line)" stroke-width="1.2" stroke-opacity=".5">
-                  <path d="M240 68L183 86L139 129L116 188L145 243L189 285L240 302L291 285L335 243L364 188L341 129L297 86Z"/>
-                  <path d="M240 68L208 139L183 86L176 193L139 129L116 188L176 193L145 243L210 237L189 285L240 302L240 254L291 285L270 237L335 243L304 193L364 188L341 129L304 193L297 86L272 139L240 68"/>
-                  <path d="M139 129L208 139L240 184L272 139L341 129M183 86L272 139L304 193L270 237L240 254L210 237L176 193L208 139L297 86"/>
-                  <path d="M116 188L210 237L240 184L270 237L364 188M145 243L240 254L335 243M176 193L240 184L304 193M208 139L272 139M210 237L270 237"/>
+                <circle cx="240" cy="180" r="212" stroke="#7de0d2" stroke-opacity=".18"/>
+                <g stroke="#7de0d2" stroke-linecap="round">
+                  <path class="scan-corners" d="M14 38V14H38M442 14H466V38M466 322V346H442M38 346H14V322" stroke-opacity=".7" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M6 120H11M6 150H11M6 180H16M6 210H11M6 240H11M474 120H469M474 150H469M474 180H464M474 210H469M474 240H469" stroke-opacity=".35"/>
                 </g>
-                <g fill="#102b3a" stroke="#7de0d2" stroke-width="1.4">
-                  <circle cx="240" cy="68" r="5"/><circle cx="183" cy="86" r="4"/><circle cx="139" cy="129" r="5"/><circle cx="116" cy="188" r="4"/><circle cx="145" cy="243" r="5"/><circle cx="189" cy="285" r="4"/><circle cx="240" cy="302" r="5"/><circle cx="291" cy="285" r="4"/><circle cx="335" cy="243" r="5"/><circle cx="364" cy="188" r="4"/><circle cx="341" cy="129" r="5"/><circle cx="297" cy="86" r="4"/>
+                <text class="scan-timecode" x="20" y="340">00:14:32:10</text>
+                <rect x=".5" y=".5" width="479" height="359" rx="9.5" stroke="#7de0d2" stroke-opacity=".16"/>
+                <circle class="scan-ripple" r="0" stroke="#f5f9fa" stroke-width="1.5" opacity="0"/>
+                <!-- The film strip of recent frames. The newest sits under the notch; the bar beneath shows each frame's phase. -->
+                <g class="scan-film">
+                  <rect class="film-window" x="479.5" y="365.5" width="0" height="41" rx="5" fill="#7de0d2" fill-opacity=".08" stroke="#7de0d2" stroke-dasharray="3 3" opacity="0"/>
+                  <g class="film-frames">
+                    <use href="#film-frame" x="2" y="370"/><use href="#film-frame" x="42" y="370"/><use href="#film-frame" x="82" y="370"/><use href="#film-frame" x="122" y="370"/>
+                    <use href="#film-frame" x="162" y="370"/><use href="#film-frame" x="202" y="370"/><use href="#film-frame" x="242" y="370"/><use href="#film-frame" x="282" y="370"/>
+                    <use href="#film-frame" x="322" y="370"/><use href="#film-frame" x="362" y="370"/><use href="#film-frame" x="402" y="370"/><use href="#film-frame" x="442" y="370"/>
+                    <rect y="401" width="440" height="3" fill="#7de0d2" fill-opacity=".75"/>
+                  </g>
+                  <rect x="440.75" y="368.75" width="38.5" height="29.5" rx="4" stroke="#7de0d2" stroke-width="1.5"/>
+                  <path d="M455 367L460 362.5L465 367" stroke="#7de0d2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </g>
-                <g fill="#7de0d2"><circle cx="208" cy="139" r="4"/><circle cx="272" cy="139" r="4"/><circle cx="176" cy="193" r="4"/><circle cx="304" cy="193" r="4"/><circle cx="210" cy="237" r="4"/><circle cx="270" cy="237" r="4"/><circle cx="240" cy="254" r="4"/></g>
-                <circle cx="240" cy="184" r="24" fill="#7de0d2" fill-opacity=".08" stroke="#7de0d2" stroke-opacity=".3"/>
-                <circle cx="240" cy="184" r="11" fill="#7de0d2" fill-opacity=".14" stroke="#7de0d2"/>
-                <circle cx="240" cy="184" r="4" fill="#dcf3ef"/>
-                <g fill="#7de0d2" fill-opacity=".55"><circle cx="97" cy="95" r="2"/><circle cx="386" cy="265" r="2"/></g>
-                <path d="M97 95H122M373 265H386" stroke="#7de0d2" stroke-opacity=".25"/>
               </svg>
-              <span class="network-label label-input">Data</span><span class="network-label label-insight">Human insight</span>
+              <span class="scan-label label-instrument" aria-hidden="true">Instrument<svg viewBox="0 0 10 10" focusable="false"><path d="M1.5 5.2L4 7.6L8.6 2.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="scan-label label-tissue" aria-hidden="true">Tissue<svg viewBox="0 0 10 10" focusable="false"><path d="M1.5 5.2L4 7.6L8.6 2.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="scan-label label-probe" aria-hidden="true">RGB<b class="probe-value">70 137 146</b></span>
+              <span class="scan-label label-track" aria-hidden="true">Grasper · ID 1</span>
+              <span class="scan-label label-action" aria-hidden="true">Retracting tissue</span>
+              <span class="scan-label label-phase" aria-hidden="true"><i></i>Phase: Dissection<svg viewBox="0 0 10 10" focusable="false"><path d="M1.5 5.2L4 7.6L8.6 2.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="scan-cursor" aria-hidden="true"><svg viewBox="0 0 16 21" focusable="false"><path d="M2 2v15l4-3.8 2.6 5.8 2.4-1-2.6-5.8H13z" fill="#f5f9fa" stroke="#102b3a" stroke-width="1.2" stroke-linejoin="round"/></svg><span>Reviewer</span></span>
+              <button class="scan-toggle" type="button" aria-label="Pause animation" hidden>
+                <svg class="icon-pause" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.5 2.5v7M8.5 2.5v7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <svg class="icon-play" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3.5 1.8v8.4L10.2 6z" fill="currentColor"/></svg>
+              </button>
             </div>
             <figcaption>
-              <div class="figure-flow"><span><small>01</small> Data</span><span aria-hidden="true">→</span><span><small>02</small> Intelligence</span><span aria-hidden="true">→</span><span><small>03</small> Human insight</span></div>
-              <p>An illustrative view of connected intelligence.</p>
+              <!-- The script enables the steps; each jumps the animation to its stage. -->
+              <ol class="pipeline-steps" aria-label="Pipeline steps">
+                <li><button type="button" aria-describedby="pipeline-step-1" disabled><small>01</small><span>Frames</span></button></li>
+                <li><button type="button" aria-describedby="pipeline-step-2" disabled><small>02</small><span>Features</span></button></li>
+                <li><button class="is-active" type="button" aria-describedby="pipeline-step-3" aria-current="step" disabled><small>03</small><span>Segment</span></button></li>
+                <li><button type="button" aria-describedby="pipeline-step-4" disabled><small>04</small><span>Track</span></button></li>
+                <li><button type="button" aria-describedby="pipeline-step-5" disabled><small>05</small><span>Phase</span></button></li>
+                <li><button type="button" aria-describedby="pipeline-step-6" disabled><small>06</small><span>Review</span></button></li>
+              </ol>
+              <div class="pipeline-details">
+                <div class="pipeline-detail" id="pipeline-step-1"><p><strong>Frame capture.</strong> Surgical video runs at 25 frames a second or more, so a live system has at most 40 ms per frame. Each frame reaches the model as a grid of pixel values.</p><div class="pipeline-models"><span>Example tools</span><ul><li>FFmpeg</li><li>OpenCV</li></ul></div></div>
+                <div class="pipeline-detail" id="pipeline-step-2"><p><strong>Feature extraction.</strong> A backbone network turns each patch of the frame into a feature vector, a list of numbers that describes what the patch shows.</p><div class="pipeline-models"><span>Example models</span><ul><li>ResNet</li><li>Vision Transformer</li><li>DINOv2</li></ul></div></div>
+                <div class="pipeline-detail is-active" id="pipeline-step-3"><p><strong>Segmentation.</strong> A segmentation model assigns every pixel a class, such as instrument, tissue, or background, which outlines each region.</p><div class="pipeline-models"><span>Example models</span><ul><li>U-Net</li><li>Mask R-CNN</li><li>SAM</li></ul></div></div>
+                <div class="pipeline-detail" id="pipeline-step-4"><p><strong>Detection and tracking.</strong> A detector boxes each instrument, and a tracker links the boxes across frames, so each tool keeps its ID and its tip leaves a path.</p><div class="pipeline-models"><span>Example models</span><ul><li>YOLO</li><li>DETR</li><li>ByteTrack</li></ul></div></div>
+                <div class="pipeline-detail" id="pipeline-step-5"><p><strong>Phase and action recognition.</strong> A temporal model combines recent frames to recognize the phase of the operation, such as dissection, and the action under way, such as retracting tissue.</p><div class="pipeline-models"><span>Example models</span><ul><li>TCN</li><li>LSTM</li><li>Transformer</li></ul></div></div>
+                <div class="pipeline-detail" id="pipeline-step-6"><p><strong>Human review.</strong> A clinician confirms or corrects each result. Corrections become new training labels, so the models can keep improving.</p><div class="pipeline-models"><span>Example methods</span><ul><li>Human in the loop</li><li>Active learning</li></ul></div></div>
+              </div>
+              <p class="figure-note">One frame in slow motion. A stylized scene, not real patient data or model output.</p>
             </figcaption>
           </figure>
         </div>

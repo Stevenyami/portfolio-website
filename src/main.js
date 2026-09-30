@@ -1,4 +1,5 @@
 import './style.css'
+import { initScanFigure } from './scan-figure.js'
 
 const header = document.querySelector('.site-header')
 const menuButton = document.querySelector('.menu-toggle')
@@ -70,3 +71,5 @@ if (header && menuButton && navigation) {
 
 const year = document.querySelector('#year')
 if (year) year.textContent = String(new Date().getFullYear())
+
+initScanFigure()
