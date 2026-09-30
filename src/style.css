@@ -284,6 +284,8 @@ section[tabindex='-1']:focus, main[tabindex='-1']:focus { outline: none; }
 .back-to-top { display: inline-flex; align-items: center; gap: 14px; min-height: 44px; color: var(--color-on-navy); }
 .back-to-top > span { color: var(--color-teal-bright); font-size: 18px; }
 .footer-inner a:hover { color: var(--color-teal-bright); }
+.footer-meta { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.footer-meta a { color: var(--color-on-navy); text-decoration: underline; text-decoration-color: #7de0d280; text-underline-offset: 3px; }
 
 @media (max-width: 1199px) {
   .container { width: calc(100% - 64px); }

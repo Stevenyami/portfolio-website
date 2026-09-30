@@ -17,7 +17,8 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header" id="top">
+    <!-- No element has id="top": the "#top" links then scroll to the top of the page, which a link to the sticky header cannot. -->
+    <header class="site-header">
       <div class="container header-inner">
         <a class="wordmark" href="#top" aria-label="Steve Nyami, back to top">
           <span class="brand-symbol" aria-hidden="true">sn<span>.</span></span>
@@ -347,7 +348,7 @@
         </div>
       </section>
     </main>
-    <footer class="site-footer"><div class="container footer-inner"><a class="footer-name" href="#top">Steve Nyami<span>.</span></a><span>© <span id="year">2026</span> Steve Nyami</span><a class="back-to-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></div></footer>
+    <footer class="site-footer"><div class="container footer-inner"><a class="footer-name" href="#top">Steve Nyami<span>.</span></a><p class="footer-meta"><span>© <span id="year">2026</span> Steve Nyami</span><span>Developed by <a href="https://xitij27.vercel.app">xitij27</a></span></p><a class="back-to-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></div></footer>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
