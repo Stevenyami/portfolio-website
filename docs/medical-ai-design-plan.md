@@ -66,7 +66,7 @@ Approximate surface balance: 65% light neutrals, 25% navy, 10% teal and supporti
 | Projects | A visible notice that project details are coming soon | A finished placeholder treatment without invented project titles, metrics, or inactive case-study links. Replace it with real work when supplied. |
 | Approach | Principles for useful, assessable medical AI | Explain the context, methods, evaluation, and role of human review. Present these as guiding principles. |
 | About | A personal introduction and verified background | Master's studies in Computer Science at TU Darmstadt and experience in Medical AI. CV link only when a real document exists. |
-| Contact | Space for future professional contact information | A clear notice until a real email address or profile is supplied. Add active links when available. |
+| Contact | Email and LinkedIn links | Navy card with plain anchor links. No form or backend. |
 | Footer | Name, year, back-to-top link | Compact navy footer. |
 
 ### Hero content
