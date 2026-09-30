@@ -30,6 +30,7 @@ npm run preview
 - The Contact section links to Steve's email and LinkedIn profile. Add a CV link only when a document is available. There is no contact form or backend.
 - Edit `src/main.js` for the mobile navigation and footer year, and `src/scan-figure.js` for the hero figure's animation loop and its timings. Essential content and navigation remain available without JavaScript.
 - Edit the color variables, typography, spacing, and components in `src/style.css` for the visual design.
+- Search metadata lives in the `<head>` of `index.html`: the title, description, canonical link, Open Graph tags, and a JSON-LD `Person` record that should match the page's content. The production URL `https://steve-nyami.vercel.app/` appears there and in `public/robots.txt` and `public/sitemap.xml`. Update all of them if the site moves to a custom domain.
 - Put static assets such as the favicon in `public/`. Photos live in `public/images/`: `steve-nyami.jpg` is the original 800 × 800 portrait, and `steve-nyami-portrait.jpg` is the 480 × 480 head-and-shoulders crop shown on the About profile card.
 
 See [the medical AI design plan](docs/medical-ai-design-plan.md) for the visual system, accessibility goals, and case-study structure.
