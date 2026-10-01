@@ -167,14 +167,6 @@ section[tabindex='-1']:focus, main[tabindex='-1']:focus { outline: none; }
 .credentials-inner strong { font-size: 16px; font-weight: 500; }
 .credential-divider { align-self: center; height: 38px; background: var(--color-border); }
 
-/* Focus and forthcoming case studies. */
-.focus-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-.focus-card { padding: 28px; border: 1px solid var(--color-border); border-radius: var(--radius-card); background: var(--color-surface); }
-.focus-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 36px; }
-.card-number { color: var(--color-text-muted); font-size: 11px; }
-.focus-card h3 { margin-bottom: 13px; font-size: 21px; }
-.focus-card p { color: var(--color-text-muted); font-size: 15px; line-height: 1.75; }
-
 /* Experience is a dated list; qualifications follow as quiet groups. */
 .experience-section { border-block: 1px solid var(--color-border); background: var(--color-surface); }
 .experience-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--color-border); }
@@ -191,13 +183,23 @@ section[tabindex='-1']:focus, main[tabindex='-1']:focus { outline: none; }
 .experience-points li::marker { color: var(--color-primary); }
 .topic-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; list-style: none; }
 .topic-tags li { padding: 4px 10px; border-radius: 6px; color: var(--color-primary-hover); background: var(--color-teal-soft); font-size: 13px; font-weight: 500; }
-.qualifications { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; margin-top: 64px; }
+.qualifications { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 64px; }
 .qualification-group { padding-top: 24px; border-top: 1px solid var(--color-border); }
 .qualification-group h3 { margin-bottom: 14px; font-size: 19px; }
 .qualification-group .topic-tags { margin-top: 0; }
 .qualification-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; color: var(--color-text-muted); font-size: 14px; line-height: 1.55; }
 .qualification-list strong { display: block; color: var(--color-text); font-weight: 500; }
 
+/* Education is one card per degree. */
+.education-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin: 0; padding: 0; list-style: none; }
+.education-card { padding: 28px; border: 1px solid var(--color-border); border-radius: var(--radius-card); background: var(--color-surface); }
+.education-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 36px; }
+.card-number { color: var(--color-text-muted); font-size: 11px; }
+.education-card h3 { font-size: 23px; }
+.education-org { margin-top: 4px; color: var(--color-primary-hover); font-size: 15px; font-weight: 500; }
+.education-card .status-label { margin-top: 18px; font-size: 13px; }
+
+/* Forthcoming case studies. */
 .project-preview { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-card); background: var(--color-surface); }
 .project-art { position: relative; display: grid; place-items: center; min-height: 448px; padding-block: 44px 64px; overflow: hidden; background: #e0f0ed; background-image: radial-gradient(#087f831c 1px, transparent 1px); background-size: 20px 20px; }
 .document-sheet { width: 65%; max-width: 316px; border: 1px solid #b9d3d0; border-radius: 7px; }
@@ -296,9 +298,7 @@ section[tabindex='-1']:focus, main[tabindex='-1']:focus { outline: none; }
   .hero-actions .button { padding-inline: 18px; gap: 18px; }
   .hero-actions .text-link { gap: 10px; }
   .credentials-inner { gap: 32px; }
-  .focus-card { padding: 24px; }
-  .focus-card-top { gap: 10px; }
-  .card-number { font-size: 10px; }
+  .education-card { padding: 24px; }
   .experience-item { grid-template-columns: 200px minmax(0, 1fr); gap: 36px; }
   .project-preview-copy { padding: 36px; }
   .about-layout, .contact-layout { gap: 64px; }
@@ -318,11 +318,7 @@ section[tabindex='-1']:focus, main[tabindex='-1']:focus { outline: none; }
   .intelligence-figure { justify-self: center; max-width: 510px; }
   .section-heading { align-items: flex-start; gap: 36px; }
   .section-lede { max-width: 300px; }
-  .focus-card { padding: 22px; }
-  .focus-card-top { align-items: flex-start; flex-direction: column; margin-bottom: 24px; }
-  .focus-card h3 { font-size: 19px; }
   .experience-item { grid-template-columns: 170px minmax(0, 1fr); gap: 28px; }
-  .qualifications { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 28px; }
   .project-art { min-height: 425px; }
   .document-sheet { width: 72%; }
   .sheet-front { padding: 22px 18px; }
@@ -378,11 +374,9 @@ section[tabindex='-1']:focus, main[tabindex='-1']:focus { outline: none; }
   .section-heading h2 { margin-top: 13px; }
   .section-lede { max-width: 510px; font-size: 15px; }
   .eyebrow { font-size: 11px; }
-  .focus-grid { grid-template-columns: 1fr; gap: 16px; }
-  .focus-card { padding: 25px; }
-  .focus-card-top { flex-direction: row; align-items: center; margin-bottom: 25px; }
-  .card-number { font-size: 11px; }
-  .focus-card h3 { font-size: 22px; }
+  .education-grid { grid-template-columns: 1fr; gap: 16px; }
+  .education-card-top { margin-bottom: 25px; }
+  .education-card h3 { font-size: 21px; }
   .experience-item { grid-template-columns: 1fr; gap: 14px; padding-block: 28px; }
   .experience-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; }
   .experience-location, .experience-meta .status-label { margin-top: 0; }
